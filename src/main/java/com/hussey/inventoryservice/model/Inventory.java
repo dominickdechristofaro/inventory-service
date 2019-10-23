@@ -1,11 +1,20 @@
 package com.hussey.inventoryservice.model;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Positive;
+import javax.validation.constraints.PositiveOrZero;
 import java.util.Objects;
 
 public class Inventory {
     // Properties
-    private int inventoryId;
-    private int productId;
-    private int quantity;
+    private Integer inventoryId;
+
+    @NotNull(message = "productId must not be null.")
+    @Positive(message = "productId must be a positive number between 1 and 2,147,483,647.")
+    private Integer productId;
+
+    @NotNull(message = "quantity must not be null.")
+    @PositiveOrZero(message = "quantity must be a positive integer number between 0 and 2,147,483,647.")
+    private Integer quantity;
 
     // Constructors
     public Inventory() {
@@ -24,28 +33,28 @@ public class Inventory {
     }
 
     // Getters
-    public int getInventoryId() {
+    public Integer getInventoryId() {
         return this.inventoryId;
     }
 
-    public int getProductId() {
+    public Integer getProductId() {
         return this.productId;
     }
 
-    public int getQuantity() {
+    public Integer getQuantity() {
         return this.quantity;
     }
 
     // Setters
-    public void setInventoryId(int inventoryIdIn) {
+    public void setInventoryId(Integer inventoryIdIn) {
         this.inventoryId = inventoryIdIn;
     }
 
-    public void setProductId(int productIdIn) {
+    public void setProductId(Integer productIdIn) {
         this.productId = productIdIn;
     }
 
-    public void setQuantity(int quantityIn) {
+    public void setQuantity(Integer quantityIn) {
         this.quantity = quantityIn;
     }
 
@@ -55,22 +64,8 @@ public class Inventory {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Inventory inventory = (Inventory) o;
-        return inventoryId == inventory.inventoryId &&
-                productId == inventory.productId &&
-                quantity == inventory.quantity;
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(inventoryId, productId, quantity);
-    }
-
-    @Override
-    public String toString() {
-        return "Inventory{" +
-                "inventoryId=" + inventoryId +
-                ", productId=" + productId +
-                ", quantity=" + quantity +
-                '}';
+        return Objects.equals(inventoryId, inventory.inventoryId) &&
+                productId.equals(inventory.productId) &&
+                quantity.equals(inventory.quantity);
     }
 }
