@@ -19,6 +19,7 @@ public class InventoryControllerImpl implements InventoryController {
 
     }
 
+    // Controller Methods
     @Override
     @Transactional
     @RequestMapping(value = "/inventory", method = RequestMethod.POST)
