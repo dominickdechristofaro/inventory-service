@@ -18,6 +18,7 @@ public class InventoryServiceTest {
     private ArgumentCaptor<Integer> integerArgumentCaptor = ArgumentCaptor.forClass(Integer.class);
     private InventoryDao inventoryDao;
 
+    // Before Each Test
     @BeforeEach
     public void setUp() throws Exception {
         setUpInventoryDaoMock();
@@ -57,13 +58,13 @@ public class InventoryServiceTest {
         // Get a list of all Inventory in the database
         List<Inventory> allInventoryList = inventoryService.getAllInventory();
 
-        // Test the getAllInventory() API method
+        // Test the getAllInventory() method
         assertEquals(3, allInventoryList.size());
     }
 
     @Test
     public void getInventoryByProductId() {
-        // Get a list of all Inventory in the database with a Product ID #1
+        // Get a list of all Inventory in the database by productId
         List<Inventory> productId1InventoryList = inventoryService.getInventoryByProductId(1);
         List<Inventory> productId2InventoryList = inventoryService.getInventoryByProductId(2);
 

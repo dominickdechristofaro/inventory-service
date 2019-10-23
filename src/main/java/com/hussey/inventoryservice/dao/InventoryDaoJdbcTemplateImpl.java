@@ -5,8 +5,6 @@ import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
-import sun.invoke.empty.Empty;
-
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
@@ -36,6 +34,7 @@ public class InventoryDaoJdbcTemplateImpl implements InventoryDao {
         this.jdbcTemplate = jdbcTemplate;
     }
 
+    // Methods
     @Override
     @Transactional
     public Inventory addInventory(Inventory inventory) {
